@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 #add-gif{
     margin-top: 10px;
 }
@@ -16,4 +20,7 @@ img{
     width: 250px;
     height: 200px;
     margin: 15px;
+}
+.rating{
+    text-align: center;
 }

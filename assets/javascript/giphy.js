@@ -23,6 +23,7 @@ $(document).ready(function () {
         }
     }
     function addImages(r) {
+        $('#image-storage').empty();
 
         for (var i = 0; i < 10; i++) {
 
@@ -34,16 +35,23 @@ $(document).ready(function () {
                 $('#image-storage').append(newRow);
                 isNewRow = false;
             }
-            else {
-                pictureCount++;
-                var newDiv = $('<div>');
-                newDiv.addClass('col-md-3');
-                var newImg = $('<img>');
-                newImg.attr('src', r.data[i].images.original_still.url);
-                newImg.attr('data-value', 'still');
-                newDiv.append(newImg);
-                $('.rowNum-' + rowCount).append(newDiv);
-            }
+
+            pictureCount++;
+            var newDiv = $('<div>');
+            newDiv.addClass('col-md-3');
+            var newP = $('<p>');
+            newP.addClass('rating');
+            newP.text('Rating: ' + r.data[i].rating);
+            newDiv.append(newP);
+            var newImg = $('<img>');
+            newImg.addClass('gif-alternate');
+            newImg.attr('src', r.data[i].images.original_still.url);
+            newImg.attr('data-value', 'still');
+            newImg.attr('src-still', r.data[i].images.original_still.url);
+            newImg.attr('src-move', r.data[i].images.original.url);
+            newDiv.append(newImg);
+            $('.rowNum-' + rowCount).append(newDiv);
+
 
 
 
@@ -59,19 +67,23 @@ $(document).ready(function () {
 
     }
     function callGiphyAjax() {
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=dc6zaTOxFJmzC&limit=" + 20;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=dc6zaTOxFJmzC&limit=" + 10;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
             addImages(response);
             console.log(response);
-
+            console.log('test');
         })
     }
 
 
-    $('.gif').on('click', function () {
+    // $('.gif').on('click', function () {
+    //     search = $(this).attr('data-name');
+    //     callGiphyAjax();
+    // })
+    $(document).on('click', '.gif', function () {
         search = $(this).attr('data-name');
         callGiphyAjax();
     })
@@ -80,6 +92,24 @@ $(document).ready(function () {
         $('#image-storage').empty();
     })
 
+    $('#add-gif').on('click', function (event) {
+        event.preventDefault();
+        gifArray.push($('#git-input').val().trim());
+        $('#button-storage').empty();
+        showButtons();
+    })
 
 
+    $(document).on('click', '.gif-alternate', function () {
+        if ($(this).attr('data-value') == 'still') {
+            //change the source to the movable
+            $(this).attr('src', $(this).attr('src-move'));
+            $(this).attr('data-value', 'move');
+        }
+        else {
+            $(this).attr('src', $(this).attr('src-still'));
+            $(this).attr('data-value', 'still');
+
+        }
+    })
 })
