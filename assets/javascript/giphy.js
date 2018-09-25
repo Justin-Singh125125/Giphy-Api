@@ -3,12 +3,14 @@ $(document).ready(function () {
     var isNewRow = true;
     var pictureCount = 0;
     var rowCount = 0;
+    var limit = 20;
+    var search = "";
+
 
 
 
 
     showButtons();
-    callGiphyAjax();
 
     function showButtons() {
         for (var i = 0; i < gifArray.length; i++) {
@@ -38,6 +40,7 @@ $(document).ready(function () {
                 newDiv.addClass('col-md-3');
                 var newImg = $('<img>');
                 newImg.attr('src', r.data[i].images.original_still.url);
+                newImg.attr('data-value', 'still');
                 newDiv.append(newImg);
                 $('.rowNum-' + rowCount).append(newDiv);
             }
@@ -56,8 +59,6 @@ $(document).ready(function () {
 
     }
     function callGiphyAjax() {
-        var limit = 20;
-        var search = prompt('Enter a gif to search for');
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=dc6zaTOxFJmzC&limit=" + 20;
         $.ajax({
             url: queryURL,
@@ -68,5 +69,17 @@ $(document).ready(function () {
 
         })
     }
+
+
+    $('.gif').on('click', function () {
+        search = $(this).attr('data-name');
+        callGiphyAjax();
+    })
+
+    $('#clear-gifs').on('click', function () {
+        $('#image-storage').empty();
+    })
+
+
 
 })
