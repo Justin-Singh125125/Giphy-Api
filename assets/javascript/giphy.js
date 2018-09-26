@@ -16,6 +16,7 @@ $(document).ready(function () {
         for (var i = 0; i < gifArray.length; i++) {
             var newButton = $('<button>');
             newButton.addClass('gif');
+            newButton.addClass('btn-info');
             newButton.attr('data-name', gifArray[i]);
             newButton.text(gifArray[i]);
             $('#button-storage').append(newButton);
@@ -39,7 +40,7 @@ $(document).ready(function () {
             pictureCount++;
             var newDiv = $('<div>');
             newDiv.addClass('col-md-3');
-            var newP = $('<p>');
+            var newP = $('<h3>');
             newP.addClass('rating');
             newP.text('Rating: ' + r.data[i].rating);
             newDiv.append(newP);
@@ -94,9 +95,13 @@ $(document).ready(function () {
 
     $('#add-gif').on('click', function (event) {
         event.preventDefault();
-        gifArray.push($('#git-input').val().trim());
-        $('#button-storage').empty();
-        showButtons();
+        var data = $('#git-input').val().trim();
+        if (!data == "") {
+            gifArray.push($('#git-input').val().trim());
+            $('#button-storage').empty();
+            showButtons();
+        }
+
     })
 
 
