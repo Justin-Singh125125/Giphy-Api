@@ -16,7 +16,7 @@ $(document).ready(function () {
         for (var i = 0; i < gifArray.length; i++) {
             var newButton = $('<button>');
             newButton.addClass('gif');
-            newButton.addClass('btn-info');
+            newButton.addClass('btn-dark');
             newButton.attr('data-name', gifArray[i]);
             newButton.text(gifArray[i]);
             $('#button-storage').append(newButton);
@@ -25,7 +25,8 @@ $(document).ready(function () {
     }
     function addImages(r) {
         $('#image-storage').empty();
-
+        var newContainer = $('<div>');
+        newContainer.addClass('container');
         for (var i = 0; i < 10; i++) {
 
             if (isNewRow) {
@@ -40,6 +41,7 @@ $(document).ready(function () {
             pictureCount++;
             var newDiv = $('<div>');
             newDiv.addClass('col-md-3');
+            newDiv.addClass('image-holder')
             var newP = $('<h3>');
             newP.addClass('rating');
             newP.text('Rating: ' + r.data[i].rating);
@@ -86,6 +88,7 @@ $(document).ready(function () {
     // })
     $(document).on('click', '.gif', function () {
         search = $(this).attr('data-name');
+        $('.images-box').css('visibility', 'visible');
         callGiphyAjax();
     })
 

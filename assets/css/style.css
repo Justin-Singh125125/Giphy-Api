@@ -25,9 +25,8 @@
  
 }
 img{
-    width: 250px;
-    height: 200px;
-    margin: 15px;
+    width: 200px;
+    height: 150px;
 }
 .rating{
     text-align: center;
@@ -39,15 +38,41 @@ body{
 .jumbotron{
     text-align: center;
     padding: 1rem 2rem;
-    background: #17a2b8;
+    background: #343a40;
+    color:#fff
 }
 input:focus{
     outline: #17a2b8;
 }
 #image-storage{
     margin-top: 30px;
+
 }
 
 .text-left{
     text-align: left;
 }
+
+.images-box{
+    margin-top: 20px;
+}
+.search-box{
+    margin-top:20px;
+  
+}
+#git-input{
+    border-radius: 5px;
+}
+#git-input:focus{
+   box-shadow: 0 0 6px rgba(35,173,255,1);
+}
+.images-box{
+    visibility: hidden;
+    background: #23272b;
+    margin-left: 10px;
+    
+}
+.rating{
+    color: #fff;
+}
+
