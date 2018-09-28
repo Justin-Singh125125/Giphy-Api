@@ -19,14 +19,21 @@
 .gif{
     margin-right: 10px;
     padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
     margin-bottom: 10px;
     margin-top: 10px;
     border-radius: 30px;
+    -webkit-transition: color .7s; /* For Safari 3.0 to 6.0 */
+    transition: color .7s; /* For modern browsers */
  
 }
+.gif:hover{
+    color: #e34ab5;
+}
 img{
-    width: 200px;
-    height: 150px;
+    width: 150px;
+    height: 125px;
 }
 .rating{
     text-align: center;
@@ -74,5 +81,27 @@ input:focus{
 }
 .rating{
     color: #fff;
+}
+.attention{
+    color: #fff;
+    border-bottom: 2px solid red;
+    -webkit-transition: color .7s; /* For Safari 3.0 to 6.0 */
+    transition: color .7s; /* For modern browsers */
+}
+.attention:hover{
+    color: #e34ab5;
+}
+.rating{
+    -webkit-transition: color .7s; /* For Safari 3.0 to 6.0 */
+    transition: color .7s; /* For modern browsers */
+}
+.rating:hover{
+    color :#e34ab5;
+}
+.gif-alternate{
+    border: 1px solid black;
+}
+.btn-warning{
+    font-weight: bold;
 }
 

@@ -27,6 +27,8 @@ $(document).ready(function () {
         $('#image-storage').empty();
         var newContainer = $('<div>');
         newContainer.addClass('container');
+        $('#image-storage').append(newContainer);
+
         for (var i = 0; i < 10; i++) {
 
             if (isNewRow) {
@@ -34,7 +36,7 @@ $(document).ready(function () {
                 var newRow = $('<div>');
                 newRow.addClass('row');
                 newRow.addClass('rowNum-' + rowCount);
-                $('#image-storage').append(newRow);
+                newContainer.append(newRow);
                 isNewRow = false;
             }
 
@@ -42,7 +44,7 @@ $(document).ready(function () {
             var newDiv = $('<div>');
             newDiv.addClass('col-md-3');
             newDiv.addClass('image-holder')
-            var newP = $('<h3>');
+            var newP = $('<h5>');
             newP.addClass('rating');
             newP.text('Rating: ' + r.data[i].rating);
             newDiv.append(newP);
@@ -58,7 +60,7 @@ $(document).ready(function () {
 
 
 
-            if (pictureCount >= 3) {
+            if (pictureCount >= 4) {
                 isNewRow = true;
                 pictureCount = 0;
             }
@@ -104,7 +106,16 @@ $(document).ready(function () {
             $('#button-storage').empty();
             showButtons();
         }
+        else {
+            $('#git-input').css('box-shadow', '0 0 6px red');
+        }
 
+    })
+    //so we can change the text border back to its original color
+    $('#git-input').on('focus', function () {
+        if (($(this).text()) == "") {
+            $('#git-input').css('box-shadow', '0 0 6px rgba(35,173,255,1)');
+        }
     })
 
 
