@@ -82,6 +82,17 @@ $(document).ready(function () {
             console.log('test');
         })
     }
+    function checkButtons(data) {
+        var status = false;
+        console.log(data);
+        for (var i = 0; i < gifArray.length; i++) {
+            if (data == gifArray[i]) {
+                status = true;
+                console.log(status);
+                return status;
+            }
+        }
+    }
 
 
     // $('.gif').on('click', function () {
@@ -101,13 +112,22 @@ $(document).ready(function () {
     $('#add-gif').on('click', function (event) {
         event.preventDefault();
         var data = $('#git-input').val().trim();
-        if (!data == "") {
-            gifArray.push($('#git-input').val().trim());
-            $('#button-storage').empty();
-            showButtons();
+        var isAlready = false;
+        isAlready = checkButtons(data);
+        if (isAlready) {
+            $('#git-input').css('box-shadow', '0 0 6px red');
         }
         else {
-            $('#git-input').css('box-shadow', '0 0 6px red');
+            if (!data == "") {
+                gifArray.push($('#git-input').val().trim());
+                $('#button-storage').empty();
+                showButtons();
+            }
+
+            else {
+                $('#git-input').css('box-shadow', '0 0 6px red');
+            }
+
         }
 
     })
