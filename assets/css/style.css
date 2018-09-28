@@ -7,6 +7,7 @@
 #add-gif{
     margin-top: 10px;
     padding: 10px;
+    border-radius: 10px;
 }
 #git-input{
     width: 100%;
@@ -64,7 +65,10 @@ input:focus{
     margin-top: 20px;
 }
 .search-box{
+   
+    margin: 0px;
     margin-top:20px;
+   
   
 }
 #git-input{
@@ -76,7 +80,7 @@ input:focus{
 .images-box{
     visibility: hidden;
     background: #23272b;
-    margin-left: 10px;
+
     
 }
 .rating{
@@ -104,4 +108,8 @@ input:focus{
 .btn-warning{
     font-weight: bold;
 }
-
+ .card:hover{
+    box-shadow:  
+    0 6px 20px 0 rgba(0, 0, 0, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
